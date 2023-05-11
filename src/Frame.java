@@ -4,10 +4,22 @@ import java.awt.*;
 
 public class Frame extends JFrame{
     private JToolBar toolbar = new JToolBar(JToolBar.HORIZONTAL);
-    private Grid grid = new Grid(64, 64, this);
+    private Grid grid = new Grid(50, 50, this);
     private JButton pp = new JButton("Run");
     private JButton reset = new JButton("Reset");
     private BorderLayout layout = new BorderLayout();
+    MouseListener hover = new MouseAdapter() {
+
+        public void mouseEntered(java.awt.event.MouseEvent e) {
+            JButton b = (JButton) e.getSource();
+            b.setBackground(new Color(191, 191, 191));
+        }
+
+        public void mouseExited(java.awt.event.MouseEvent e) {
+            JButton b = (JButton) e.getSource();
+            b.setBackground(new Color(255, 255, 255));
+        }
+    };
     ActionListener action = (e) -> {
         JButton b = (JButton) e.getSource();
         if(b == pp){
